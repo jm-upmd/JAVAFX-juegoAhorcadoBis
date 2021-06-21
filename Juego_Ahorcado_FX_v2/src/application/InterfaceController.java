@@ -73,7 +73,6 @@ public class InterfaceController implements EventHandler<ActionEvent>{
 	// Este metodo se ejecuta cuando están todos los elementos fxml inyectados
 
 	public void initialize() {
-		// Crea los listeners con método del controlador.
 		creaListenersBotonesLetras();
 		cargaHorcas();
 		creaBindins();
@@ -115,14 +114,13 @@ public class InterfaceController implements EventHandler<ActionEvent>{
 			}
 		}
 		
-		// Lo hemos implementado a través del fxml con el método procesaTeclaPulsada(KeyEvent e)
-		
+		// Registra listener para recoger eventos de pulsación de teclado.
 		teclado.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 			@Override
 			public void handle(KeyEvent e) {
 				Button botonLetra;
-
+				// Si el botón está en la hashtable de botones
 				if ((botonLetra = botonesLetra.get(e.getText().toUpperCase())) != null)
 					// Lanza el evento de botón pulsado. Esto es equivaliente a hacer clic en el
 					// botón.
@@ -133,14 +131,14 @@ public class InterfaceController implements EventHandler<ActionEvent>{
 		
 		// Versión con expresiones lambda
 		
-		teclado.setOnKeyPressed(e -> {
-			Button botonLetra;
-
-				if ((botonLetra = botonesLetra.get(e.getText().toUpperCase())) != null)
-					// Lanza el evento de botón pulsado. Esto es equivaliente a hacer clic en el
-					// botón.
-					botonLetra.fire();
-		});
+//		teclado.setOnKeyPressed(e -> {
+//			Button botonLetra;
+//
+//				if ((botonLetra = botonesLetra.get(e.getText().toUpperCase())) != null)
+//					// Lanza el evento de botón pulsado. Esto es equivaliente a hacer clic en el
+//					// botón.
+//					botonLetra.fire();
+//		});
 	}
 
 	private void partidaNueva() {
